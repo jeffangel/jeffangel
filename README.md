@@ -28,7 +28,7 @@ Cloud Specialist
 
 ## Projects
 **Innovation Challenge Hackathon** (https://github.com/jeffangel/hackbox_grupo7)  
-- This project was developed as part of the final product created to win second place in the Microsoft Hackathon in June 2024.
+- This project was developed as part of the final product created to win second place in the Microsoft AI Hackathon in June 2024.
 
 
 ## Education
