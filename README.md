@@ -35,6 +35,8 @@ Cloud Specialist
 
 **Data Science Master** | University of Bath | Candidate
 
+**Python for Data Science Diploma** | Valencia International University | 2023
+
 **Network and Communications Engineer** | Peruvian University of Applied Sciences | 2022
 
 **Network and Data Communications Technician** | Institute TECSUP | 2014
