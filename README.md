@@ -2,7 +2,7 @@
 Cloud Engineer
 
 ## Summary
-I am a network and Data Communications Engineer with six years of experience working with cloud infrastructure services (Azure, AWS, and GCP). I became a data enthusiast in 2022, and thereby, I studied for a diploma in Python for Machine Learning. I am primarily interested in transforming processes and business intelligence to develop new solutions for managing and analyzing large volumes of data. I have a solid knowledge of cloud computing services, data management and processing tools, data algorithms, and object-oriented programming with Python.
+Network and Data Communications Engineer with six years of experience working with cloud infrastructure services (Azure, AWS, and GCP). I became a data enthusiast in 2022, and thereby, I studied for a diploma in Python for Machine Learning. I am primarily interested in transforming processes and business intelligence to develop new solutions for managing and analyzing large volumes of data. I have a solid knowledge of cloud computing services, data management and processing tools, data algorithms, and object-oriented programming with Python.
 
 ## Skills
 - Programming Languages: Python, T-SQL, Powershell and Bash
