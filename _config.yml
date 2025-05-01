@@ -4,7 +4,7 @@ logo: photo.png
 
 description: Cloud Engineer and eventually Data Scientist and AI Engineer
 
-show_downloads: true
+show_downloads: false
 
 theme: jekyll-theme-minimal 
 
