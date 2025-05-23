@@ -1,0 +1,9 @@
+{
+  "name": "github-pages-tailwind",
+  "scripts": {
+    "build": "npx tailwindcss -i ./styles.css -o ./output.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
+  }
+}
