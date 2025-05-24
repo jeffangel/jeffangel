@@ -29,8 +29,7 @@
     </div>
   </nav>
 
-
-  <div class="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
+  <main class="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
     <!-- Perfil lateral -->
     <aside class="bg-white rounded-xl shadow p-6 lg:col-span-1">
       <div class="text-center">
@@ -172,62 +171,100 @@
       </div>
     </aside>
 
-    <!-- Proyectos -->
-    <section class="lg:col-span-2 space-y-6">
-      <h2 id="projects" class="text-lg font-bold">PORTFOLIO PROJECTS</h2>
-      <div class="bg-white rounded-xl shadow p-6 flex flex-col md:flex-row gap-4">
-        <img class="w-full md:w-48 h-32 object-cover rounded" src="assets/posts/primero/employee-churn.png"
-          alt="project">
-        <div>
-          <h3 class="font-semibold text-lg">Employee churn prediction - An MLOps project running on Docker</h3>
-          <div class="flex flex-wrap gap-2 text-xs mt-1">
-            <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded-full">ML Frequentist</span>
-            <span class="bg-green-100 text-green-700 px-2 py-1 rounded-full">Comet ML</span>
-            <span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full">ZenML</span>
-            <span class="bg-rose-100 text-rose-700 px-2 py-1 rounded-full">Evidently</span>
-            <span class="bg-indigo-100 text-indigo-700 px-2 py-1 rounded-full">MinIO</span>
-            <span class="bg-pink-100 text-pink-700 px-2 py-1 rounded-full">Docker</span>
-            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded-full">GitHub Actions</span>
+    <!-- Contenido principal agrupado -->
+    <div class="lg:col-span-2 space-y-6">
+      <!-- Proyectos -->
+      <section id="projects" class="lg:col-span-2 space-y-6">
+        <h2 class="text-lg font-bold">PORTFOLIO PROJECTS</h2>
+        <div class="bg-white rounded-xl shadow p-6 flex flex-col md:flex-row gap-4">
+          <img class="w-full md:w-48 h-32 object-cover rounded"
+            src="assets/projects/employee-churn-mlops/employee-churn.png" alt="Employee churn prediction">
+          <div>
+            <h3 class="font-semibold text-lg">Employee churn prediction - An MLOps project running on Docker</h3>
+            <div class="flex flex-wrap gap-2 text-xs mt-1">
+              <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded-full">ML Frequentist</span>
+              <span class="bg-green-100 text-green-700 px-2 py-1 rounded-full">Comet ML</span>
+              <span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full">ZenML</span>
+              <span class="bg-rose-100 text-rose-700 px-2 py-1 rounded-full">Evidently</span>
+              <span class="bg-indigo-100 text-indigo-700 px-2 py-1 rounded-full">MinIO</span>
+              <span class="bg-pink-100 text-pink-700 px-2 py-1 rounded-full">Docker</span>
+              <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded-full">GitHub Actions</span>
+            </div>
+            <p class="text-sm text-gray-600 mt-2">Machine learning-based talent leakage prediction system, implemented
+              with MLOps best practices. Includes reproducible pipelines, monitoring and containerised deployment using
+              Docker.</p>
+            <a href="https://github.com/jeffangel/talent-retention-mlops"
+              class="inline-block mt-2 text-sm text-blue-600 hover:underline">Read more →</a>
           </div>
-          <p class="text-sm text-gray-600 mt-2">Machine learning-based talent leakage prediction system, implemented
-            with MLOps best practices. Includes reproducible pipelines, monitoring and containerised deployment using
-            Docker.</p>
-          <a href="#" class="inline-block mt-2 text-sm text-blue-600 hover:underline">Read more →</a>
         </div>
-      </div>
 
+        <div class="bg-white rounded-xl shadow p-6 flex flex-col md:flex-row gap-4">
+          <img class="w-full md:w-48 h-32 object-cover rounded" src="assets/projects/connect+/connect+.jpeg"
+            alt="project">
+          <div>
+            <h3 class="font-semibold text-lg">Microsoft Hackathon Project: Connect+ - Platform to boost networking for
+              women in tech using Azure</h3>
+            <div class="flex flex-wrap gap-2 text-xs mt-1">
+              <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded-full">LLM</span>
+              <span class="bg-green-100 text-green-700 px-2 py-1 rounded-full">Document Intelligence</span>
+              <span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full">AI Search</span>
+              <span class="bg-rose-100 text-rose-700 px-2 py-1 rounded-full">Azure Data Lake</span>
+              <span class="bg-pink-100 text-pink-700 px-2 py-1 rounded-full">Docker</span>
+              <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded-full">Azure Cosmos DB</span>
+            </div>
+            <p class="text-sm text-gray-600 mt-2">Full-stack platform based on microservices to promote the inclusion of
+              women in technology, with scalable architecture, reproducible pipelines, efficient communication between
+              services and containerised deployment using containers.</p>
+            <a href="https://github.com/jeffangel/hackbox-grupo7"
+              class="inline-block mt-2 text-sm text-blue-600 hover:underline">Read more →</a>
+          </div>
+        </div>
+      </section>
       <!-- Blog section -->
-      <h2 id="blog" class="text-lg font-bold mt-12">BLOG</h2>
-      <div class="bg-white rounded-xl shadow p-6">
-        <h3 class="font-semibold text-lg">How I built an end-to-end MLOps pipeline with ZenML and Comet</h3>
-        <p class="text-sm text-gray-600 mt-2">Walkthrough on integrating experiment tracking, reproducible pipelines,
-          monitoring with Evidently, and model deployment using Docker.</p>
-        <a href="/blog/primero/" class="inline-block mt-2 text-sm text-blue-600 hover:underline">Read blog post →</a>
-      </div>
+      <section id="blog" class="lg:col-span-2 space-y-6">
+        <h2 class="text-lg font-bold mt-12">BLOG</h2>
+        <div class="bg-white rounded-xl shadow p-6">
+          <h3 class="font-semibold text-lg">How I built an end-to-end MLOps pipeline with ZenML and Comet</h3>
+          <p class="text-sm text-gray-600 mt-2">Walkthrough on integrating experiment tracking, reproducible pipelines,
+            monitoring with Evidently, and model deployment using Docker.</p>
+          <a href="/blog/primero/" class="inline-block mt-2 text-sm text-blue-600 hover:underline">Read blog post →</a>
+        </div>
 
+        <div class="bg-white rounded-xl shadow p-6">
+          <h3 class="font-semibold text-lg">How I fine-tuned CNN models with the Keras Functional API</h3>
+          <p class="text-sm text-gray-600 mt-2">Walkthrough on applying transfer learning, customizing CNN
+            architectures,
+            and deploying models with experiment tracking and monitoring.</p>
+          <a href="/blog/training-cnn-with-keras-from-scratch/"
+            class="inline-block mt-2 text-sm text-blue-600 hover:underline">Read blog post →</a>
+        </div>
+      </section>
       <!-- Educación y experiencia -->
-      <h2 id="experience" class="text-lg font-bold mt-12">EXPERIENCE & EDUCATION</h2>
-      <div class="bg-white rounded-xl shadow p-6 text-sm text-gray-700 space-y-4">
-        <div>
-          <h3 class="font-semibold">Experience</h3>
-          <ul class="list-disc ml-6 mt-1">
-            <li><strong>Cirion Technologies</strong> (2023 – Present) – <em>Cloud Architect – Lima, Peru</em></li>
-            <li><strong>Lumen</strong> (2019 – 2022) – <em>Cloud Engineer – Lima, Peru</em></li>
-            <li><strong>Seidor</strong> (2018 – 2019) – <em>On-Premises Specialist – Lima, Peru</em></li>
-          </ul>
+      <section id="experience" class="lg:col-span-2 space-y-6">
+        <h2 class="text-lg font-bold mt-12">EXPERIENCE & EDUCATION</h2>
+        <div class="bg-white rounded-xl shadow p-6 text-sm text-gray-700 space-y-4">
+          <div>
+            <h3 class="font-semibold">Experience</h3>
+            <ul class="list-disc ml-6 mt-1">
+              <li><strong>Cirion Technologies</strong> (2023 – Present) – <em>Cloud Architect – Lima, Peru</em></li>
+              <li><strong>Lumen</strong> (2019 – 2022) – <em>Cloud Engineer – Lima, Peru</em></li>
+              <li><strong>Seidor</strong> (2018 – 2019) – <em>On-Premises Specialist – Lima, Peru</em></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-semibold">Education</h3>
+            <ul class="list-disc ml-6 mt-1">
+              <!-- <li><strong>MSc in Statistical Science and Engineering</strong>, UNI, Peru – <em>In progress</em></li> -->
+              <li><strong>MSc Data Science</strong>, University of Bath, England – <em>In progress</em></li>
+              <li><strong>Diploma: Python for Data Science</strong>, VIU, Spain – 2023</li>
+              <li><strong>BSc Network and Communications Engineering</strong>, UPC, Peru – 2017</li>
+              <li><strong>Technician: Data & Network Communications</strong>, TECSUP, Peru – 2014</li>
+            </ul>
+          </div>
         </div>
-        <div>
-          <h3 class="font-semibold">Education</h3>
-          <ul class="list-disc ml-6 mt-1">
-            <li><strong>MSc Data Science</strong>, University of Bath, UK – <em>In progress</em></li>
-            <li><strong>Diploma: Python for Data Science</strong>, VIU, Spain – 2023</li>
-            <li><strong>BSc Network and Communications Engineering</strong>, UPC, Peru – 2017</li>
-            <li><strong>Technician: Data & Network Communications</strong>, TECSUP, Peru – 2014</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-  </div>
+      </section>
+    </div>
+  </main>
 </body>
 
 </html>
