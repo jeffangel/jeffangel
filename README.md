@@ -1,65 +1,137 @@
-# Jefferson Angel Areche Rojas
-Cloud Architect | Data Science MSc Candidate | MLOps & AI Engineer
+# 👋 Hi, I'm Jefferson Angel Areche Rojas
 
-## 🧠 Summary
-Cloud Architect with 6+ years of experience across Azure, AWS, and GCP. I specialise in designing robust data and ML systems with a strong focus on MLOps, reproducibility, and business impact. Currently pursuing a Master's in Data Science at the University of Bath, I combine deep technical skills in cloud infrastructure, model deployment, and monitoring with a practical mindset for solving business problems in talent analytics, health, and finance.
+**Cloud & AI Architect | MLOps Engineer | MSc Data Science**
 
-## 🚀 Skills
+I design and build **production-ready AI and Machine Learning systems** on cloud-native infrastructure across **Azure, AWS, and GCP**.  
+My focus is on **end-to-end ML platforms**, combining:
 
-- **Programming Languages:** Python, T-SQL, PowerShell, Bash, TypeScript  
-- **Operating Systems:** Windows, Linux  
-- **Machine Learning & AI:** Scikit-learn, XGBoost, PyTorch, TensorFlow, Keras, MLflow, Comet ML, Evidently, OpenCV, Azure Open AI, Azure AI, Copilot Studio, Vertex AI  
-- **MLOps & Deployment:** ZenML, BentoML, GitHub Actions, Docker, Kubernetes, act, DVC  
-- **Cloud Platforms & Infrastructure:** Azure (Synapse, ADF, Fabric), AWS, GCP, Terraform, Azure DevOps  
-- **Data Engineering:** Apache Spark (PySpark), Apache Airflow, Amazon MWAA, Dataflow, Pandas, NumPy  
-- **Databases:** SQL Server (MSSQL), PostgreSQL, MySQL, MongoDB, Cosmos DB (incl. Gremlin)  
-- **Business Intelligence & Visualisation:** Power BI, QuickSight, Streamlit, Matplotlib, Seaborn  
-- **Tools & Practices:** Git, CI/CD, Agile, Task, uv, Infisical
+- Scalable cloud architecture  
+- Reproducible ML pipelines  
+- Model deployment & monitoring  
+- Statistical and deep learning modelling  
 
-## 📂 Projects
+🔗 **Technical Blog & Portfolio**: https://jeffangel.github.io/
 
-**🧠 Predicting Human Talent Churn**  
-GitHub: [talent-retention-mlops](https://github.com/jeffangel/talent-retention-mlops)  
-Developed an end-to-end MLOps pipeline to predict employee attrition using ZenML, BentoML, and Evidently, with experiment tracking via Comet ML and GitHub-based CI/CD using `act`.  
+---
 
-**🏆 Innovation Challenge Hackathon**  
-GitHub: [hackbox_grupo7](https://github.com/jeffangel/hackbox_grupo7)  
-Finalist project (2nd place) in the Microsoft AI Hackathon 2024. Built a solution using Azure Open AI and Copilot Studio to enhance visibility and participation of women in STEM through data storytelling and GenAI.
+## 🧠 What I Do
 
-## 💼 Experience
+I work at the intersection of **Cloud Architecture, Machine Learning, and MLOps**.
 
-<details>
-<summary><strong>Cirion Technologies</strong> (2023 – Present) · <em>Cloud Architect – Lima, Peru</em></summary>
+I don’t just train models, I build the **systems around them**:
 
-- Designed and optimised multi-cloud architectures for enterprise clients, enabling scalable and cost-efficient deployments across Azure, GCP and AWS platforms.  
-- Conducted technical briefings and architectural reviews, providing expert guidance on service adoption, migration, and integration of new features.  
-- Led behavioural and trend analysis of cloud resource usage, identifying early signs of data and compute drifts and recommending actionable strategies.
+- Automated training pipelines  
+- CI/CD for ML  
+- Experiment tracking & model registry  
+- Model monitoring and drift detection  
+- Reliable inference services  
 
-</details>
+My work spans domains such as:
 
-<details>
-<summary><strong>Lumen</strong> (2019 – 2022) · <em>Cloud Engineer – Lima, Peru</em></summary>
+- 📊 Talent analytics  
+- 🏥 Health & monitoring systems  
+- 🤖 Computer vision  
+- 🧠 GenAI-assisted platforms  
 
-- Designed and implemented cloud computing infrastructures aligned with business needs and in coordination with delivery and sales/pre-sales teams.  
-- Managed and provided operational support for the company’s customers on cloud infrastructure.  
-- Developed tools to minimise the response time and reduce operational and repetitive tasks and incidents.
+---
 
-</details>
+## 🚀 Technical Stack
 
-<details>
-<summary><strong>Seidor</strong> (2018 – 2019) · <em>On-Premises Specialist – Lima, Peru</em></summary>
+### 🤖 AI & Machine Learning
+PyTorch · TensorFlow · Keras · Scikit-learn · XGBoost · OpenCV · NumPyro · Optuna  
+MLflow · Comet ML · Weights & Biases · Evidently AI  
+Azure OpenAI · Vertex AI · Hugging Face  
 
-- Trained operational team members and led 2 specialists to address requirements on operating systems and cloud computing platforms.  
-- Handled critical escalations, ensuring rapid resolution of system-blocking incidents.
+### ⚙️ MLOps & ML Platforms
+ZenML · BentoML · SageMaker · Azure ML  
+Model CI/CD · Experiment Tracking · Model Registry  
+Data & Model Versioning · Drift Monitoring  
 
-</details>
+### ☁️ Cloud & Infrastructure
+Azure · AWS · GCP  
+Terraform · Docker · Kubernetes · GitHub Actions · Azure DevOps  
 
+### 📦 Data Engineering
+PySpark · Apache Spark · Airflow · Dataflow · Pandas · NumPy  
+
+---
+
+## 📂 Featured Projects
+
+### 🏗 Simulating SageMaker Inference with LocalStack
+Local simulation of AWS SageMaker training & inference workflows.
+
+- ECS + Step Functions orchestration  
+- Containerised ML workloads  
+- Infrastructure as Code with Terraform  
+- CI/CD automation  
+
+This project reflects **ML platform engineering**, not just modelling.
+
+---
+
+### 👁 CNN Multibranch Model — Age & Gender Detection
+End-to-end computer vision system:
+
+- CNN trained from scratch  
+- Hyperparameter optimisation with Optuna  
+- FastAPI inference service  
+- Live demo deployment  
+
+---
+
+### 🏆 Microsoft AI Hackathon — 2nd Place
+AI-powered platform using Azure OpenAI and Copilot Studio to improve visibility of women in STEM.
+
+- LLM workflows integrated with structured data  
+- Responsible AI messaging  
+- Rapid prototyping under constraints  
+
+---
 
 ## 🎓 Education
 
-| Degree | Institution | Year |
-|--------|-------------|------|
-| **MSc Data Science** | University of Bath | *In progress* |
-| **Diploma: Python for Data Science** | VIU – Valencia International University | 2023 |
-| **BSc Network and Communications Engineering** | UPC – Universidad Peruana de Ciencias Aplicadas | 2022 |
-| **Technician: Data & Network Communications** | TECSUP | 2014 |
+- MSc Statistical Engineering (in progress)  
+- MSc Data Science  
+- BSc Telecommunications Engineering  
+
+Academic focus:
+
+- Statistical modelling  
+- Optimisation  
+- Computer vision  
+- Edge AI  
+
+---
+
+## 🧩 What Makes My Profile Different
+
+I combine:
+
+✔ Cloud Architecture mindset  
+✔ Strong ML & Deep Learning practice  
+✔ MLOps discipline  
+✔ Statistical foundations  
+
+I build **AI systems that are reproducible, observable, and production-ready**, not just experiments.
+
+---
+
+## ✍️ Technical Writing
+
+I publish detailed technical articles on:
+
+- Training deep learning models from scratch  
+- ML system architecture  
+- Reproducible MLOps workflows  
+- Statistical modelling explanations  
+
+📖 Blog: https://jeffangel.github.io/
+
+---
+
+## 📫 Let’s Connect
+
+- 🌍 Portfolio: https://jeffangel.github.io/  
+- 💼 LinkedIn: https://www.linkedin.com/in/jeffersonangel  
+- 📧 Email: jefferson.areche@gmail.com
