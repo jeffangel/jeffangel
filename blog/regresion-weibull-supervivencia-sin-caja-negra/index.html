@@ -394,9 +394,15 @@
           </p>
 
           <p class="blog-paragraph">
-            $$F_i(y)=\left[-e^{-z}\right]_{0}^{(y/\mu_i)^\alpha}
+            $$
+            F_i(y)=\left[-e^{-z}\right]_{0}^{(y/\mu_i)^\alpha}
+            $$
+            $$
             =-e^{-(y/\mu_i)^\alpha}-(-1)
-            =1-\exp\!\left[-\left(\frac{y}{\mu_i}\right)^\alpha\right]$$
+            $$
+            $$
+            =1-\exp\!\left[-\left(\frac{y}{\mu_i}\right)^\alpha\right]
+            $$
           </p>
 
           <p class="blog-paragraph">
@@ -407,239 +413,188 @@
             $$F_i(y)=1-\exp\!\left[-\left(\frac{y}{\mu_i}\right)^\alpha\right] \tag{3}$$
           </p>
 
-<h3 class="blog-paragraph-h3">Función de supervivencia (SF)</h3>
+          <h3 class="blog-paragraph-h3">Función de supervivencia (SF)</h3>
 
-<p class="blog-paragraph">
-  La función de supervivencia se define como la probabilidad de que el
-  tiempo de vida exceda un cierto valor \(y\):
-</p>
-
-<p class="blog-paragraph-end" id="eq-weibull-sf-def">
-  $$S_i(y)=\mathbb{P}(Y_i>y)=1-F_i(y) \tag{4}$$
-</p>
-
-<p class="blog-paragraph">
-  Sustituyendo <a href="#eq-weibull-cdf-final">(3)</a> en
-  <a href="#eq-weibull-sf-def">(4)</a>, obtenemos:
-</p>
-
-<p class="blog-paragraph-end" id="eq-weibull-sf">
-  $$S_i(y)=\exp\!\left[-\left(\frac{y}{\mu_i}\right)^\alpha\right],
-  \quad y>0 \tag{5}$$
-</p>
-
-
-
-<h3 class="blog-paragraph-h3">Reexpresión en términos del predictor lineal</h3>
-
-<p class="blog-paragraph">
-  Recordando que el parámetro de escala se modela como
-  \( \mu_i = \exp(\eta_i) \),
-  donde \( \eta_i = \beta_0 + \beta_1 x_i \),
-  es conveniente reescribir ciertos términos de la densidad.
-</p>
-
-<p class="blog-paragraph">
-  En particular,
-</p>
-
-<p class="blog-paragraph-end">
-  $$\left(\frac{y}{\mu_i}\right)^\alpha
-  =
-  y^\alpha \exp(-\alpha \eta_i)$$
-</p>
-
-<p class="blog-paragraph">
-  Definimos entonces la cantidad auxiliar:
-</p>
-
-<p class="blog-paragraph-end" id="eq-Ai">
-  $$A_i(y) = \left(\frac{y}{\mu_i}\right)^\alpha \tag{6}$$
-</p>
-
-<p class="blog-paragraph">
-  Entonces, reemplazando <a href="#eq-Ai">(6)</a> en <a href="#eq-weibull-pdf">(1)</a>, la función de densidad puede expresarse como:
-</p>
-
-<p class="blog-paragraph" id="eq-weibull-pdf-reparam">
-  $$f(y_i)=
-  \alpha\, y_i^{\alpha-1}
-  \exp(-\alpha \eta_i)
-  \exp\big(-A_i(y_i)\big) \tag{7}$$
-</p>
-
-<p class="blog-paragraph">
-  De manera similar, la función de distribución acumulada y la función de supervivencia se reexpresan como:
-</p>
-
-<p class="blog-paragraph-end" id="eq-weibull-cdf-reparam">
-  $$F_i(y)=1-\exp\big(-A_i(y)\big) \tag{8}$$
-</p>
-
-<p class="blog-paragraph-end" id="eq-weibull-sf-reparam">
-  $$S_i(y)=\exp\big(-A_i(y)\big) \tag{9}$$
-</p>
-
-
-<h3 class="blog-paragraph-h3">Función de verosimilitud con censura</h3>
-
-<p class="blog-paragraph">
-  En presencia de censura por intervalo y censura derecha,
-  la contribución individual al likelihood depende del tipo
-  de información observada.
-</p>
-
-<p class="blog-paragraph">
-  Teniendo en cuenta las contribuciones individuales, la función de verosimilitud se expresa como:
-</p>
-
-<p class="blog-paragraph">
-  • Censura izquierda (0, y<sub>upp,i</sub>):
-</p>
-
-<p class="blog-paragraph-end">
-  $$\mathbb{P}(Y_i \le y_{\text{upp},i}) = F_i(y_{\text{upp},i}).$$
-</p>
-
-<p class="blog-paragraph">
-  • Censura por intervalo (y<sub>low,i</sub>, y<sub>upp,i</sub>]:
-</p>
-
-<p class="blog-paragraph-end">
-  $$\mathbb{P}(y_{\text{low},i} < Y_i \le y_{\text{upp},i})
-  =
-  F_i(y_{\text{upp},i}) - F_i(y_{\text{low},i}).$$
-</p>
-
-<p class="blog-paragraph">
-  • Censura derecha (y<sub>low,i</sub>, ∞):
-</p>
-
-<p class="blog-paragraph-end">
-  $$\mathbb{P}(Y_i > y_{\text{low},i})
-  =
-  1 - F_i(y_{\text{low},i}).$$
-</p>
-
-<p class="blog-paragraph">
-  Definiendo indicadores apropiados para cada tipo de censura,
-  la función de verosimilitud total se expresa como:
-</p>
-
-<p class="blog-paragraph-end">
-  $$L(\beta_0,\beta_1,\alpha)
-  =
-  \prod_{i=1}^{n}
-  F_i(y_{\text{upp},i})^{\mathbf{1}_{(0,y_{\text{upp}})}}
-  \left[
-  F_i(y_{\text{upp},i}) - F_i(y_{\text{low},i})
-  \right]^{\mathbf{1}_{(y_{\text{low}},y_{\text{upp}})}}
-  \left[
-  1 - F_i(y_{\text{low},i})
-  \right]^{\mathbf{1}_{(y_{\text{low}},\infty)}}
-  .$$
-</p>
-
-
-<!-- <h3 class="blog-paragraph-h3">
-Forma compacta del likelihood con notación auxiliar
-</h3>
-
-<p class="blog-paragraph">
-Recordando que
-\( F_i(y)=1-\exp(-A_i(y)) \),
-donde
-\( A_i(y)=y^\alpha \exp(-\alpha\eta_i) \),
-las contribuciones individuales pueden reescribirse de manera más compacta.
-</p>
-
-<p class="blog-paragraph">
-En particular, para censura por intervalo:
-</p>
-
-<p class="blog-paragraph-end">
-$$
-F_i(y_{\text{upp},i}) - F_i(y_{\text{low},i})
-=
-\exp(-A_i(y_{\text{low},i}))
--
-\exp(-A_i(y_{\text{upp},i})).
-$$
-</p>
-
-<p class="blog-paragraph">
-Y para censura derecha:
-</p>
-
-<p class="blog-paragraph-end">
-$$
-1 - F_i(y_{\text{low},i})
-=
-\exp(-A_i(y_{\text{low},i})).
-$$
-</p>
-
-<p class="blog-paragraph">
-Por tanto, la función de verosimilitud puede escribirse como:
-</p>
-
-<p class="blog-paragraph-end">
-$$
-L(\beta_0,\beta_1,\alpha)
-=
-\prod_{i=1}^{n}
-\left[
-1-\exp(-A_i(y_{\text{upp},i}))
-\right]^{I_{L,i}}
-\left[
-\exp(-A_i(y_{\text{low},i}))
--
-\exp(-A_i(y_{\text{upp},i}))
-\right]^{I_{I,i}}
-\left[
-\exp(-A_i(y_{\text{low},i}))
-\right]^{I_{R,i}}
-.
-$$
-$$ -->
-
-
-          <h3 class="blog-paragraph-h3">Función de verosimilitud</h3>
           <p class="blog-paragraph">
-            La función de verosimilitud mide qué tan bien un valor del parámetro del modelo
-            explica los datos observados. En este enfoque, los datos se consideran fijos y
-            el parámetro es la cantidad que se ajusta.
+            La función de supervivencia se define como la probabilidad de que el
+            tiempo de vida exceda un cierto valor \(y\):
+          </p>
+
+          <p class="blog-paragraph-end" id="eq-weibull-sf-def">
+            $$S_i(y)=\mathbb{P}(Y_i>y)=1-F_i(y) \tag{4}$$
           </p>
 
           <p class="blog-paragraph">
-            Partiendo de la función de masa de probabilidad de la distribución Bernoulli y
-            asumiendo observaciones independientes, la verosimilitud se obtiene como el
-            producto de las probabilidades asociadas a cada observación.
+            Sustituyendo <a href="#eq-weibull-cdf-final">(3)</a> en
+            <a href="#eq-weibull-sf-def">(4)</a>, obtenemos:
           </p>
+
+          <p class="blog-paragraph-end" id="eq-weibull-sf">
+            $$S_i(y)=\exp\!\left[-\left(\frac{y}{\mu_i}\right)^\alpha\right],
+            \quad y>0 \tag{5}$$
+          </p>
+
+
+
+          <h3 class="blog-paragraph-h3">Reexpresión en términos del predictor lineal</h3>
+
+          <p class="blog-paragraph">
+            Recordando que el parámetro de escala se modela como
+            \( \mu_i = \exp(\eta_i) \),
+            donde \( \eta_i = \beta_0 + \beta_1 x_i \),
+            es conveniente reescribir ciertos términos de la densidad.
+          </p>
+
+          <p class="blog-paragraph">
+            En particular,
+          </p>
+
+          <p class="blog-paragraph-end">
+            $$\left(\frac{y}{\mu_i}\right)^\alpha
+            =
+            y^\alpha \exp(-\alpha \eta_i)$$
+          </p>
+
+          <p class="blog-paragraph">
+            Definimos entonces la cantidad auxiliar:
+          </p>
+
+          <p class="blog-paragraph-end" id="eq-Ai">
+            $$A_i(y) = \left(\frac{y}{\mu_i}\right)^\alpha \tag{6}$$
+          </p>
+
+          <p class="blog-paragraph">
+            Entonces, reemplazando <a href="#eq-Ai">(6)</a> en <a href="#eq-weibull-pdf">(1)</a>, la función de densidad
+            puede expresarse como:
+          </p>
+
+          <p class="blog-paragraph" id="eq-weibull-pdf-reparam">
+            $$f(y_i)=
+            \alpha\, y_i^{\alpha-1}
+            \exp(-\alpha \eta_i)
+            \exp(-A_i(y_i)) \tag{7}$$
+          </p>
+
+          <p class="blog-paragraph">
+            De manera similar, la función de distribución acumulada y la función de supervivencia se reexpresan como:
+          </p>
+
+          <p class="blog-paragraph-end" id="eq-weibull-cdf-reparam">
+            $$F_i(y)=1-\exp(-A_i(y)) \tag{8}$$
+          </p>
+
+          <p class="blog-paragraph-end" id="eq-weibull-sf-reparam">
+            $$S_i(y)=\exp(-A_i(y)) \tag{9}$$
+          </p>
+
+
+          <h3 class="blog-paragraph-h3">Función de verosimilitud con censura</h3>
+
+          <p class="blog-paragraph">
+            En presencia de censura por intervalo y censura derecha,
+            la contribución individual al likelihood depende del tipo
+            de información observada.
+          </p>
+
+          <p class="blog-paragraph">
+            Teniendo en cuenta las contribuciones individuales, la función de verosimilitud se expresa como:
+          </p>
+
+          <ul class="blog-paragraph-list">
+            <li>Censura izquierda (0, y<sub>upp,i</sub>):</li>
+          </ul>
+
+          <p class="blog-paragraph-end">
+            $$\mathbb{P}(Y_i \le y_{\text{upp},i}) = F_i(y_{\text{upp},i}).$$
+          </p>
+
+          <ul class="blog-paragraph-list">
+            <li>Censura por intervalo (y<sub>low,i</sub>, y<sub>upp,i</sub>):</li>
+          </ul>
+
+          <p class="blog-paragraph-end">
+            $$\mathbb{P}(y_{\text{low},i} \lt Y_i \le y_{\text{upp},i})
+            =
+            F_i(y_{\text{upp},i}) - F_i(y_{\text{low},i})$$
+          </p>
+
+          <ul class="blog-paragraph-list">
+            <li>Censura derecha (y<sub>low,i</sub>, ∞):</li>
+          </ul>
+
+          <p class="blog-paragraph-end">
+            $$\mathbb{P}(Y_i > y_{\text{low},i})
+            =
+            1 - F_i(y_{\text{low},i})$$
+          </p>
+
+          <p class="blog-paragraph">
+            Definiendo indicadores apropiados para cada tipo de censura,
+            la función de verosimilitud total se expresa como:
+          </p>
+
+          <p class="blog-paragraph-end">
+            $$L(\beta_0,\beta_1,\alpha)
+            =
+            \prod_{i=1}^{n}
+            F_i(y_{\text{upp},i})^{\mathbf{1}_{(lc_i=1,rc_i=0)}}
+            $$
+            $$
+            \times
+            \left[
+            F_i(y_{\text{upp},i}) - F_i(y_{\text{low},i})
+            \right]^{\mathbf{1}_{(lc_i=0,rc_i=0)}}
+            $$
+            $$
+            \times
+            \left[
+            1 - F_i(y_{\text{low},i})
+            \right]^{\mathbf{1}_{(lc_i=0,rc_i=1)}}
+            $$
+          </p>
+
+          <p class="blog-paragraph">
+            Reemplazando en base a <a href="#eq-weibull-cdf-reparam">(8)</a>, cada término de la verosimilitud se puede
+            reescribir en función de \(A_i(y)\):
+          </p>
+
+          <p class="blog-paragraph-end" id="verosimilitud">
+            $$
+            L(\beta_0,\beta_1,\alpha)
+            =
+            \prod_{i=1}^{n}
+            \left[
+            1-\exp(-A_i(y_{\text{upp},i}))
+            \right]^{\mathbf{1}_{(lc_i=1,rc_i=0)}}
+            $$
+            $$
+            \times
+            \left[
+            \exp(-A_i(y_{\text{low},i}))
+            -
+            \exp(-A_i(y_{\text{upp},i}))
+            \right]^{\mathbf{1}_{(lc_i=0,rc_i=0)}}
+            $$
+            $$
+            \times
+            \left[
+            \exp(-A_i(y_{\text{low},i}))
+            \right]^{\mathbf{1}_{(lc_i=0,rc_i=1)}}
+            \tag{10}
+            $$
+
           <p class="blog-quote">
-            <strong>Nota:</strong> La independencia de las observaciones es una suposición clave que
-            simplifica el cálculo de la verosimilitud al permitir expresar la probabilidad conjunta
-            como el producto de probabilidades individuales.
+            <strong>Nota:</strong> Los indicadores <em>lc<sub>i</sub></em> (left censoring) y
+            <em>rc<sub>i</sub></em> (right censoring) identifican el tipo de censura asociado
+            a la observación <em>i</em>. En particular,
+            <em>lc<sub>i</sub>=1</em> indica censura izquierda,
+            <em>rc<sub>i</sub>=1</em> indica censura derecha,
+            y cuando <em>lc<sub>i</sub>=0</em> y <em>rc<sub>i</sub>=0</em> se trata de censura
+            por intervalo. Estos indicadores permiten escribir la función de verosimilitud
+            en forma compacta mediante potencias que activan únicamente la contribución
+            correspondiente a cada tipo de observación.
           </p>
 
-          <p class="blog-paragraph">
-            Entonces, obtenemos la función de verosimilitud multiplicando las PMF de cada observación con parámetro
-            \(p\).
-          </p>
-          <p class="blog-paragraph">
-            $$
-            \text{Si } Y_1, \ldots, Y_n \sim \text{Bernoulli}(p)
-            $$
-
-            $$
-            L(\beta)
-            = \prod_{i=1}^{n} p_i^{y_i}(1-p_i)^{1-y_i},
-            \qquad
-            p_i = \sigma(\eta_i) = \frac{1}{1+e^{-\eta_i}},
-            \qquad
-            \eta_i = x_i^\top \beta
-            $$
-          </p>
           <h3 class="blog-paragraph-h3">Función de log-verosimilitud</h3>
           <p class="blog-paragraph">
             En la práctica, rara vez trabajamos directamente con la función de verosimilitud. Al tratarse de un producto
@@ -654,897 +609,232 @@ $$ -->
           </p>
 
           <p class="blog-paragraph">
+            Es decir, la función de log-verosimilitud se define como el logaritmo de la función de verosimilitud:
             $$
-            \ell(\beta) = \log L(\beta)
-            = \sum_{i=1}^{n}\left[
-            y_i\log(p_i) + (1-y_i)\log(1-p_i)
-            \right]
+            \ell(\beta_0,\beta_1,\alpha) = \log L(\beta_0,\beta_1,\alpha)
             $$
           </p>
 
-          <h3 class="blog-paragraph-h3">Función de pérdida</h3>
           <p class="blog-paragraph">
-            A partir de la log-verosimilitud podriamos realizar los siguientes calculos. Sin embargo, se suele trabajar
-            con la función de pérdida, que es simplemente el negativo de la log-verosimilitud.
+            Reemplazando en base a <a href="#verosimilitud">(10)</a> en la definición de log-verosimilitud, obtenemos:
+            $$
+            \ell(\beta_0,\beta_1,\alpha)
+            =
+            \sum_{i \in \mathcal{L}}
+            \log\!\left(1-\exp\!\left[-A_i(y_{\text{upp},i})\right]\right)
+            $$
+
+            $$
+            +
+            \sum_{i \in \mathcal{I}}
+            \log\!\left(
+            \exp\!\left[-A_i(y_{\text{low},i})\right]
+            -
+            \exp\!\left[-A_i(y_{\text{upp},i})\right]
+            \right)
+            $$
+
+            $$
+            -
+            \sum_{i \in \mathcal{R}}
+            A_i(y_{\text{low},i})
+            $$
+          </p>
+
+          <p class="blog-paragraph">
+            Donde los conjuntos \(\mathcal{L}\), \(\mathcal{I}\) y \(\mathcal{R}\) corresponden a los índices de las
+            observaciones con censura izquierda, censura por intervalo y censura derecha, respectivamente. Es decir,
+            $$
+            \mathcal{L}=\{i: l_{c,i}=1,\ r_{c,i}=0\}
+            $$
+            $$
+            \mathcal{I}=\{i: l_{c,i}=0,\ r_{c,i}=0\}
+            $$
+            $$
+            \mathcal{R}=\{i: l_{c,i}=0,\ r_{c,i}=1\}
+            $$
+          </p>
+
+          <h3 class="blog-paragraph-h3">Verosimilitud</h3>
+
+          <p class="blog-paragraph">
+            Cuando construimos un modelo estadístico, lo que realmente queremos es
+            encontrar los valores de sus parámetros que mejor expliquen los datos que hemos observado.
+          </p>
+
+          <p class="blog-paragraph">
+            La verosimilitud es justamente la herramienta que nos ayuda a hacer eso.
+            Nos dice qué tan bien un conjunto específico de parámetros se ajusta a los datos.
+          </p>
+
+          <p class="blog-paragraph">
+            Podemos pensar en ella como una medida de qué tan “compatible” es el modelo
+            (con ciertos parámetros) con la información que tenemos.
+            Si la verosimilitud es alta, significa que esos parámetros hacen que los datos observados
+            sean más coherentes con el modelo.
+          </p>
+
+          <p class="blog-paragraph">
+            El objetivo entonces es elegir los parámetros que hagan que la verosimilitud
+            sea lo más grande posible. A este procedimiento se le conoce como
+            <strong>estimación por máxima verosimilitud</strong>.
+          </p>
+
+          <p class="blog-paragraph">
+            Si suena algo abstracto, veamos un ejemplo:
           </p>
           <p class="blog-paragraph">
-            El por qué de esto radica en que muchos algoritmos de optimización están formulados para minimizar una
-            función de pérdida en lugar de maximizar una función de verosimilitud. Sí, solo eso!
+            Imagina que tienes un pequeño negocio de delivery de café. Notas que mientras más lejos está el cliente,
+            más tiempo tarda el pedido en llegar.
+          </p>
+
+          <p class="blog-paragraph">
+            Decides modelar el tiempo de entrega con una regla muy simple:
+          </p>
+
+          <p class="blog-paragraph">
+            $$
+            \text{Tiempo} = \beta_0 + \beta_1 \times \text{Distancia}
+            $$
+
+            Donde:
+          </p>
+
+          <ul class="blog-paragraph-list">
+            <li>\( \beta_0 \) es el tiempo base (preparar el café, salir del local, etc.)</li>
+            <li>\( \beta_1 \) es cuánto aumenta el tiempo por cada kilómetro adicional.</li>
+          </ul>
+          <p class="blog-paragraph">
+            Para hacer inferencia o crear predicciones necesitaremos encontrar los valores de \( \beta_0 \) y \( \beta_1
+            \) que mejor expliquen los tiempos de entrega que has observado en tus pedidos anteriores.
           </p>
           <p class="blog-paragraph">
-            Minimizar la función de pérdida es equivalente a maximizar la log-verosimilitud, por lo que ambos enfoques
-            conducen a los
-            mismos parámetros óptimos.
+            Para hacer esto, calcularemos la verosimilitud de los datos observados para cada combinación de valores de \(
+            \beta_0 \) y \( \beta_1 \), y seleccionaremos los valores que maximizan esa verosimilitud.
+          </p>
+
+          <h3 class="blog-paragraph-h3">Intervalos de confianza</h3>
+          <p class="blog-paragraph">
+            Para analizar la incertidumbre asociada a los parámetros estimados, es común construir intervalos de
+            confianza
+            basados en el perfil de verosimilitud. Este método se fundamenta en el Teorema de Wilks, que establece
+            que
+            bajo ciertas condiciones, la razón de verosimilitudes sigue una distribución chi-cuadrado asintótica.
+          </p>
+          <p class="blog-paragraph">
+            Antes profundizar en la construcción de intervalos de confianza, entendamos dos términos claves, que son
+            el
+            nivel de confianza y el nivel de significancia.
+          </p>
+          <p class="blog-paragraph">
+            El <strong>nivel de confianza</strong> es la probabilidad de que el intervalo de confianza contenga el
+            valor
+            verdadero del parámetro.
           </p>
           <p class="blog-quote">
-            <strong>Ejemplo:</strong> Imagina que debes elegir la mejor de dos opciones. A la primera le damos una
-            puntuación de 10 y a la segunda una puntuación de 2. Si nuestro objetivo es maximizar la puntuación,
-            elegimos claramente la primera opción.
-
-            Ahora pensemos el problema al revés. En lugar de trabajar con una puntuación, definimos un “error” que es
-            simplemente el negativo de esa puntuación. La primera opción tendrá un error de -10 y la segunda un error de
-            -2. Si nuestro objetivo es minimizar el error, volvemos a elegir la primera opción.
+            Por ejemplo, un nivel de confianza del 95% significa que si repitiéramos el
+            experimento muchas veces, aproximadamente el 95% de los intervalos construidos a partir de esas muestras
+            incluirían el valor real del parámetro.
           </p>
           <p class="blog-paragraph">
-            Así, la función de pérdida para la regresión logística se expresa como:
+            El <strong>nivel de significancia</strong>, por otro lado, es la probabilidad de rechazar la hipótesis
+            nula
+            cuando esta es verdadera. En el contexto de intervalos de confianza, un nivel de significancia del 5% se
+            relaciona con un nivel de confianza del 95%, ya que el intervalo se construye para incluir el valor del
+            parámetro con una probabilidad del 95%, dejando un 5% de probabilidad para que el valor quede fuera del
+            intervalo.
           </p>
-
-          <p class="blog-paragraph-end">
-            $$
-            \mathcal{L}(\beta) = -\ell(\beta)
-            \qquad\Rightarrow\qquad
-            \mathcal{L}(\beta)
-            =
-            -\sum_{i=1}^{n}\left[
-            y_i\log(p_i) + (1-y_i)\log(1-p_i)
-            \right]
-            $$
-
-          </p>
-
-          <h3 class="blog-paragraph-h3">Gradiente de la función de pérdida</h3>
           <p class="blog-paragraph">
-            Una vez que hemos definido la función de pérdida, el siguiente paso es
-            encontrar los valores del parámetro que la hacen lo más pequeña posible.
-            Para ello, necesitamos saber en qué dirección debemos movernos para reducir
-            el error.
+            Matematicamente, el nivel de confianza y el nivel de significancia están relacionados por la siguiente
+            expresión:
+            $$\text{Nivel de confianza} = 1 - \text{Nivel de significancia}$$
           </p>
 
           <p class="blog-paragraph">
-            El gradiente cumple exactamente ese rol: indica la dirección en la que la
-            función de pérdida crece más rápido. Si queremos minimizar la pérdida,
-            simplemente nos movemos en la dirección opuesta.
-          </p>
-          <p class="blog-paragraph">
-            Una forma intuitiva de pensarlo es imaginar una pendiente. El gradiente nos
-            dice hacia dónde está la subida más empinada; si queremos bajar, caminamos en
-            sentido contrario.
-          </p>
-
-          <p class="blog-paragraph">
-            Para cálcular la gradiente de manera analítica, realizamos la derivada parcial de la función de pérdida con
-            respecto a los parámetros \(\beta\).
-
-          </p>
-          <p class="blog-paragraph">
             $$
-            \frac{\partial \mathcal{L}(\beta)}{\partial \beta}
+            \widehat{\theta}
             =
-            -\sum_{i=1}^{n}
-            \frac{\partial}{\partial \beta}
-            \left[
-            y_i\log(p_i) + (1-y_i)\log(1-p_i)
-            \right]
-            $$
-
-            $$
+            (\widehat{\beta}_0,\widehat{\beta}_1,\widehat{\alpha})
             =
-            -\sum_{i=1}^{n}\left[
-            y_i\frac{\partial}{\partial \beta}\log(p_i)
-            +
-            (1-y_i)\frac{\partial}{\partial \beta}\log(1-p_i)
-            \right]
-            \tag{1}
-            $$
-          </p>
-          <p class="blog-paragraph">
-            Ahora, nos enfocamos en derivar cada uno de los términos dentro de la suma en (1).
-          </p>
-          <p class="blog-paragraph">
-            Recordando que la derivada del logaritmo es:
-            $$
-            \frac{d}{dx}\log(f(x))
-            =
-            \frac{1}{f(x)}\frac{df(x)}{dx}
-            $$
-            Podemos aplicar esta regla a cada término en (1).
-            $$
-            \frac{\partial \log(p_i)}{\partial \beta}
-            =
-            \frac{1}{p_i}\frac{\partial p_i}{\partial \beta}
-            \tag{2}
-            $$
-            $$
-            \frac{\partial \log(1-p_i)}{\partial \beta}
-            =
-            \frac{1}{1-p_i}\frac{\partial(1-p_i)}{\partial \beta}
-            =
-            \frac{1}{1-p_i}\left(-\frac{\partial p_i}{\partial \beta}\right)
-            =
-            -\frac{1}{1-p_i}\frac{\partial p_i}{\partial \beta}
-            \tag{3}
-            $$
-          </p>
-          <p class="blog-paragraph">
-            Sustituyendo (2) y (3) en (1), obtenemos:
-            $$
-            \frac{\partial \mathcal{L}(\beta)}{\partial \beta}
-            =
-            -\sum_{i=1}^{n}\left[
-            y_i\left(\frac{1}{p_i}\frac{\partial p_i}{\partial \beta}\right)
-            +
-            (1-y_i)\left(-\frac{1}{1-p_i}\frac{\partial p_i}{\partial \beta}\right)
-            \right]
-            $$
-            $$
-            =
-            -\sum_{i=1}^{n}\left[
-            \left(\frac{y_i}{p_i}-\frac{1-y_i}{1-p_i}\right)\frac{\partial p_i}{\partial \beta}
-            \right]
-            \tag{4}
-            $$
-          </p>
-          <p class="blog-paragraph">
-            Ahora, necesitamos calcular \( \partial p_i / \partial \beta \). Recordando que \( p_i = \sigma(\eta_i) \) y
-            \( \eta_i = x_i^\top \beta \), aplicamos la regla de la cadena:
-
-            $$
-            \frac{\partial p_i}{\partial \beta}
-            =
-            \frac{\partial p_i}{\partial \eta_i}
-            \frac{\partial \eta_i}{\partial \beta}
-            \tag{5}
-            $$
-          </p>
-          <p class="blog-paragraph">
-            Derivemos primero el último término de (5) porque es un poco más sencillo:
-            $$
-            \frac{\partial \eta_i}{\partial \beta}
-            =
-            \frac{\partial}{\partial \beta}(x_i^\top \beta)
-            =
-            x_i
-            \tag{6}
-            $$
-          </p>
-          <p class="blog-paragraph">
-            Ahora derivemos el primer término de (5) recordando que:
-            $$
-            p_i
-            =
-            \sigma(\eta_i)
-            =
-            \frac{1}{1+e^{-\eta_i}}
-            =
-            \left( 1 + e^{-\eta_i} \right)^{-1}
-            $$
-          </p>
-          <p class="blog-paragraph">
-            Además, observamos que:
-            $$
-            1 - p_i
-            =
-            1 - \frac{1}{1 + e^{-\eta_i}}
-            =
-            \frac{e^{-\eta_i}}{1 + e^{-\eta_i}}
-            \tag{7}
-            $$
-          </p>
-          <p class="blog-paragraph">
-            Entonces derivando \( p_i \) con respecto a \( \eta_i \):
-            $$
-            \frac{\partial p_i}{\partial \eta_i}
-            =
-            \frac{\partial}{\partial \eta_i}
-            \left( 1 + e^{-\eta_i} \right)^{-1}
-            =
-            -\left(1 + e^{-\eta_i}\right)^{-2}
-            \cdot
-            \left(-e^{-\eta_i}\right)
-            =
-            \frac{e^{-\eta_i}}{\left(1 + e^{-\eta_i}\right)^2}
-            $$
-            $$
-            =
-            \frac{1}{1 + e^{-\eta_i}}
-            \cdot
-            \frac{e^{-\eta_i}}{1 + e^{-\eta_i}}
-            $$
-          </p>
-          <p class="blog-paragraph">
-            Utilizando (7), podemos reescribir esto como:
-            $$
-            \frac{\partial p_i}{\partial \eta_i}
-            =
-            p_i (1 - p_i)
-            \tag{8}
-            $$
-          </p>
-          <p class="blog-paragraph">
-            Finalmente, sustituyendo (6) y (8) en (5), obtenemos:
-            $$
-            \frac{\partial p_i}{\partial \beta}
-            =
-            p_i (1 - p_i) x_i
-            \tag{9}
-            $$
-          </p>
-          <p class="blog-paragraph">
-            Sustituyendo (9) en (4), tenemos:
-            $$
-            \frac{\partial \mathcal{L}(\beta)}{\partial \beta}
-            =
-            -\sum_{i=1}^{n}\left[
-            \left(\frac{y_i}{p_i}-\frac{1-y_i}{1-p_i}\right)
-            p_i (1 - p_i) x_i
-            \right]
-            $$
-            $$
-            =
-            -\sum_{i=1}^{n}\left[
-            (y_i(1 - p_i) - (1 - y_i)p_i) x_i
-            \right]
-            $$
-            $$
-            =
-            -\sum_{i=1}^{n}\left[
-            (y_i - p_i) x_i
-            \right]
-            $$
-          </p>
-          <p class="blog-paragraph-end">
-            Por lo tanto, la expresión final del gradiente de la función de pérdida en su forma matricial es:
-            $$
-            \nabla \mathcal{L}(\beta)
-            =
-            -X^\top (y - p)
-            =
-            X^\top (p - y)
-            $$
-          </p>
-          <h3 class="blog-paragraph-h3">Hessiano de la función de pérdida</h3>
-
-          <p class="blog-paragraph">
-            Mientras que el gradiente nos indica la dirección en la que la función de pérdida
-            cambia más rápidamente, el Hessiano nos proporciona información de segundo orden
-            sobre la curvatura de la función.
-          </p>
-
-          <p class="blog-paragraph">
-            En términos geométricos, el Hessiano describe cómo cambia el gradiente a medida que
-            nos movemos en el espacio de parámetros. Esto nos permite entender si la función es
-            más o menos pronunciada, o si presenta zonas planas o altamente curvas.
-          </p>
-
-          <p class="blog-paragraph">
-            Siguiendo la analogía de la pendiente, si el gradiente nos dice hacia dónde subir,
-            el Hessiano nos dice qué tan empinada es esa subida y cómo varía la inclinación en
-            cada dirección.
-          </p>
-
-          <p class="blog-paragraph">
-            Esta información adicional es clave en métodos de optimización de segundo orden
-            como el método de Newton-Raphson, donde el Hessiano se utiliza para ajustar el tamaño
-            y la dirección del paso de actualización de forma más precisa que solamente utilizando la gradiente.
-          </p>
-          <p class="blog-paragraph">
-            Para calcular el Hessiano, derivamos nuevamente el gradiente con respecto a los parámetros \( \beta \).
-
-            $$
-            H(\beta)
-            =
-            \frac{\partial^2 \mathcal{L}(\beta)}{\partial \beta \partial \beta^\top}
-            =
-            \frac{\partial}{\partial \beta}
-            \left(X^\top (p - y)\right)
-            $$
-            $$
-            =
-            X^\top
-            \frac{\partial (p - y)}{\partial \beta}
-            $$
-            $$
-            =
-            X^\top
-            \frac{\partial p}{\partial \beta}
-            \tag{10}
-            $$
-
-            Usando la expresión obtenida previamente para \( \partial p_i / \partial \beta \) en (9), podemos escribir:
-            $$
-            \frac{\partial p}{\partial \beta}
-            =
-            D X
-            $$
-            donde \( D \) es una matriz diagonal con elementos \( p_i (1 - p_i) \) en la diagonal.
-            $$
-            D = \text{diag}(p_1(1 - p_1), p_2(1
-            - p_2), \ldots, p_n(1 - p_n))
-            $$
-            Reemplazando esto en (10), obtenemos la expresión final del Hessiano:
-            $$
-            H(\beta)
-            =
-            X^\top D X
-            $$
-          </p>
-          <h3 class="blog-paragraph-h3">Newton Raphson</h3>
-          <p class="blog-paragraph">
-            Como mencionamos anteriormente, el método de Newton-Raphson es un algoritmo de optimización de
-            <strong>segundo orden</strong>
-            que utiliza tanto el gradiente como el Hessiano para encontrar los parámetros que minimizan la función de
-            pérdida.
-          </p>
-          <p class="blog-paragraph">
-            Para entender de dónde surge la actualización de Newton-Raphson, partimos de una idea fundamental del
-            análisis matemático, el cual aproxima una función complicada por un polinomio simple en un entorno local, en
-            efecto, una expansión de Taylor <sup><a href="#ref-2">[2]</a></sup>.
-          </p>
-          <p class="blog-paragraph">
-            Entonces, partimos de la expansión de Taylor de la función de pérdida alrededor del punto actual \(
-            \beta^{(t)} \):
-            $$
-            \mathcal{L}(\beta)
-            \approx
-            \mathcal{L}(\beta^{(t)})
-            +
-            \nabla \mathcal{L}(\beta^{(t)})^\top
-            (\beta - \beta^{(t)})
-            +
-            \frac{1}{2}
-            (\beta - \beta^{(t)})^\top
-            H(\beta^{(t)})
-            (\beta - \beta^{(t)})
-            $$
-          </p>
-          <p class="blog-paragraph">
-            Para abreviar la expresión hagamos los siguientes reemplazos:
-            $$
-            g^{(t)} = \nabla \mathcal{L}(\beta^{(t)}), \quad
-            H^{(t)} = H(\beta^{(t)}), \quad
-            d = \beta - \beta^{(t)}
-            $$
-            Entonces, la aproximación de Taylor se puede reescribir como:
-            $$
-            \mathcal{L}(\beta)
-            \approx
-            \mathcal{L}(\beta^{(t)})
-            +
-            g^{(t)\top} d
-            +
-            \frac{1}{2}
-            d^\top H^{(t)} d
-            $$
-          </p>
-          <p class="blog-paragraph">
-            Derivando ambos lados con respecto a \( \beta \):
-            $$
-            \nabla_\beta \mathcal{L}(\beta)
-            \approx
-            \nabla_\beta
-            \left[
-            \mathcal{L}(\beta^{(t)})
-            +
-            g^{(t)\top} d
-            +
-            \frac{1}{2}
-            d^\top H^{(t)} d
-            \right]
-            $$
-            $$
-            \approx
-            \nabla_\beta
-            \mathcal{L}(\beta^{(t)})
-            +
-            \nabla_\beta
-            \left(
-            g^{(t)\top} d
-            \right)
-            +
-            \nabla_\beta
-            \left(
-            \frac{1}{2}
-            d^\top H^{(t)} d
-            \right)
-            \tag{11}
-            $$
-          </p>
-          <p class="blog-paragraph">
-            Ahora, derivemos cada uno de los términos en (11). El primer término es cero porque \(
-            \mathcal{L}(\beta^{(t)}) \) es una constante con respecto a \( \beta \):
-            $$
-            \nabla_\beta
-            \mathcal{L}(\beta^{(t)})
-            =
-            0
-            \tag{12}
-            $$
-          </p>
-          <p class="blog-paragraph">
-            El segundo término se deriva como:
-            $$
-            \nabla_\beta
-            \left(
-            g^{(t)\top} d
-            \right)
-            =
-            \nabla_\beta
-            \left(
-            g^{(t)\top} (\beta - \beta^{(t)})
-            \right)
-            =
-            g^{(t)}
-            \tag{13}
-            $$
-          </p>
-          <p class="blog-paragraph">
-            Finalmente, el tercer término no tiene una derivada tan directa, pero veamos cómo se
-            calcula. Recordemos que \( d \in \mathbb{R}^p \) y \( H^{(t)} \in \mathbb{R}^{p \times p} \).
-            El término cuadrático puede escribirse explícitamente como:
-            $$
-            d^\top H^{(t)} d
-            =
-            \sum_{i=1}^p \sum_{j=1}^p d_i \, H^{(t)}_{ij} \, d_j
+            \arg\max_{\beta_0,\beta_1,\alpha}
+            \ell(\beta_0,\beta_1,\alpha)
             $$
           </p>
 
           <p class="blog-paragraph">
-            Derivando este término con respecto a la componente \( d_k \):
             $$
-            \frac{\partial}{\partial d_k}
-            \left(
-            \sum_{i=1}^p \sum_{j=1}^p d_i \, H^{(t)}_{ij} \, d_j
-            \right)
-            =
-            \sum_{i=1}^p \sum_{j=1}^p
-            \frac{\partial}{\partial d_k}
-            \left(
-            d_i \, H^{(t)}_{ij} \, d_j
-            \right)
-            \tag{14}
-            $$
-          </p>
-
-          <p class="blog-paragraph">
-            Para calcular estas derivadas, observamos que las componentes de \( d \) son
-            independientes entre sí. En particular, se cumple que:
-            $$
-            \frac{\partial d_i}{\partial d_k}
-            =
-            \begin{cases}
-            1, & i = k, \\
-            0, & i \neq k,
-            \end{cases}
+            \text{Para } \beta_0:
             \qquad
-            \frac{\partial d_j}{\partial d_k}
+            PL(\beta_0)
             =
-            \begin{cases}
-            1, & j = k, \\
-            0, & j \neq k,
-            \end{cases}
+            \max_{\beta_1,\alpha}
+            \ell(\beta_0,\beta_1,\alpha)
+            $$
+
+            $$
+            \left(\widehat{b}_1(\beta_0),\widehat{\alpha}(\beta_0)\right)
+            =
+            \arg\max_{\beta_1,\alpha}
+            \ell(\beta_0,\beta_1,\alpha)
             $$
           </p>
 
-
           <p class="blog-paragraph">
-            Esto se puede expresar de forma compacta usando el delta de Kronecker
-            \( \delta_{ik} \) y \( \delta_{jk} \) <sup><a href="#ref-2">[2]</a></sup>. Así, la derivada de cada
-            término es:
             $$
-            \frac{\partial}{\partial d_k}
-            \left(
-            d_i \, H^{(t)}_{ij} \, d_j
+            D_P(\beta_0)
+            =
+            2\left(
+            \ell(\widehat{\theta})
+            -
+            PL(\beta_0)
             \right)
-            =
-            \delta_{ik} H^{(t)}_{ij} d_j
-            +
-            d_i H^{(t)}_{ij} \delta_{jk}
-            $$
-          </p>
-          <p class="blog-paragraph">
-            Reemplazando esto en (14), obtenemos:
-            $$
-            \frac{\partial}{\partial d_k}
-            \left(
-            d^\top H^{(t)} d
-            \right)
-            =
-            \sum_{i=1}^p \sum_{j=1}^p
-            \left(
-            \delta_{ik} H^{(t)}_{ij} d_j
-            +
-            d_i H^{(t)}_{ij} \delta_{jk}
-            \right)
-            $$
-            $$
-            =
-            \sum_{i=1}^p \sum_{j=1}^p \delta_{ik} H^{(t)}_{ij} d_j
-            +
-            \sum_{i=1}^p \sum_{j=1}^p d_i H^{(t)}_{ik} \delta_{jk}
-            $$
-            $$
-            =
-            \sum_{j=1}^p H^{(t)}_{kj} d_j
-            +
-            \sum_{i=1}^p d_i H^{(t)}_{ik}
-            $$
-            $$
-            =
-            \left(H^{(t)} d\right)_k
-            +
-            \left(H^{(t)\top} d\right)_k
-            $$
-          </p>
-          <p class="blog-paragraph">
-            Dado que el Hessiano es simétrico (\( H^{(t)} = H^{(t)\top} \)) por definición, podemos simplificar la
-            expresión a:
-            $$
-            \frac{\partial}{\partial d_k}
-            \left(
-            d^\top H^{(t)} d
-            \right)
-            =
-            \left(H^{(t)} d\right)_k
-            +
-            \left(H^{(t)\top} d\right)_k
-            =
-            \left(H^{(t)} + H^{(t)\top} \right)_k d
-            =
-            2 \left(H^{(t)} d\right)_k
-            \tag{15}
-            $$
-          </p>
-          <p class="blog-paragraph">
-            Reemplazando (15) en el tercer término de (11), tenemos:
-            $$
-            \nabla_\beta
-            \left(
-            \frac{1}{2}
-            d^\top H^{(t)} d
-            \right)
-            =
-            \frac{1}{2} \cdot 2 H^{(t)} d
-            =
-            H^{(t)} d
-            \tag{16}
-            $$
-          </p>
-          <p class="blog-paragraph">
-            Finalmente, combinando (12), (13) y (16) en (11), obtenemos:
-            $$
-            \nabla_\beta \mathcal{L}(\beta)
-            \approx
-            0
-            +
-            g^{(t)}
-            +
-            H^{(t)} d
-            \approx
-            g^{(t)}
-            +
-            H^{(t)} d
-            $$
-          </p>
-          <p class="blog-paragraph">
-            Retornando a los términos originales, tenemos:
-            $$
-            \nabla_\beta \mathcal{L}(\beta)
-            \approx
-            \nabla \mathcal{L}(\beta^{(t)})
-            +
-            H(\beta^{(t)})
-            (\beta - \beta^{(t)})
-            $$
-          </p>
-          <p class="blog-paragraph">
-            Para encontrar el mínimo de la función de pérdida, establecemos el gradiente igual a cero y resolvemos para
-            \( \beta \):
-            $$
-            0
-            =
-            \nabla \mathcal{L}(\beta^{(t)})
-            +
-            H(\beta^{(t)})
-            (\beta - \beta^{(t)})
-            $$
-            $$
-            \Rightarrow
-            \quad
-            H(\beta^{(t)})
-            (\beta - \beta^{(t)})
-            =
-            -\nabla \mathcal{L}(\beta^{(t)})
-            $$
-            $$
-            \Rightarrow
-            \quad
-            \beta - \beta^{(t)}
-            =
-            -H(\beta^{(t)})^{-1}
-            \nabla \mathcal{L}(\beta^{(t)})
-            $$
-            $$
-            \Rightarrow
-            \quad
-            \beta
-            =
-            \beta^{(t)}
-            -
-            H(\beta^{(t)})^{-1}
-            \nabla \mathcal{L}(\beta^{(t)})
-            $$
-          </p>
-          <p class="blog-paragraph-end">
-            Por lo tanto, la regla de actualización de Newton-Raphson es:
-            $$
-            \beta^{(t+1)}
-            =
-            \beta^{(t)}
-            -
-            H(\beta^{(t)})^{-1}
-            \nabla \mathcal{L}(\beta^{(t)})
-            $$
-          </p>
-
-
-          <h3 class="blog-paragraph-h3">Descenso de Gradiente</h3>
-
-          <p class="blog-paragraph">
-            Como contraparte al método de Newton-Raphson, el descenso de gradiente es un algoritmo de optimización de
-            <strong>primer orden</strong>, ya que utiliza únicamente información del gradiente para actualizar los
-            parámetros, evitando el cálculo del Hessiano de la función de pérdida.
-          </p>
-
-          <p class="blog-paragraph">
-            Para entender de dónde surge la regla de actualización del descenso de gradiente, partimos nuevamente de una
-            idea fundamental del análisis matemático, es decir, la aproximación local de una función mediante una
-            expansión de Taylor<sup><a href="#ref-2">[2]</a></sup>.
-            En este caso, consideramos únicamente los términos de primer orden.
-          </p>
-
-          <p class="blog-paragraph">
-            Para ver con claridad cómo el polinomio de Taylor conduce a una aproximación de la derivada, partimos de la
-            expansión de segundo orden de una función diferenciable alrededor del punto \( x \):
-            $$
-            f(x+h)
-            =
-            f(x)
-            +
-            f'(x)\,h
-            +
-            \frac{f''(x)}{2}\,h^2
-            $$
-
-            $$
-            f(x+h) - f(x)
-            =
-            f'(x)\,h
-            +
-            \frac{f''(x)}{2}\,h^2
-            $$
-
-            $$
-            f'(x)\,h
-            =
-            f(x+h) - f(x)
-            -
-            \frac{f''(x)}{2}\,h^2
-            $$
-
-            $$
-            f'(x)
-            =
-            \frac{f(x+h) - f(x)}{h}
-            -
-            \frac{f''(x)}{2}\,h
-            $$
-          </p>
-
-
-          <p class="blog-paragraph">
-            Luego de hacer algunas cuentas sobre el polinomio de Taylor, llegamos a una expresión en la que el último
-            término es proporcional a \( h \), por lo que representa un error de orden \( \mathcal{O}(h) \).
-            Es decir, cuando \( h \) es suficientemente pequeño, este término se vuelve despreciable y se obtiene
-            la aproximación:
-            $$
-            f'(x)
-            \approx
-            \frac{f(x+h) - f(x)}{h}
-            \quad
-            \Rightarrow
-            \quad
-            f(x+h)
-            \approx
-            f(x)
-            +
-            f'(x)\,h
-            \tag{17}
+            \;\sim\;
+            \chi^2_{1}
             $$
           </p>
 
           <p class="blog-paragraph">
-            Si ahora extrapolamos la idea de (17) al caso multivariado, consideremos la función de pérdida \(
-            \mathcal{L}(\beta) \) y un desplazamiento pequeño \( \Delta = \beta - \beta^{(t)} \). Usando una expansión
-            de Taylor de primer orden alrededor del
-            punto actual \( \beta^{(t)} \), se obtiene:
             $$
-            \mathcal{L}(\beta^{(t)} + \Delta)
-            \approx
-            \mathcal{L}(\beta^{(t)})
-            +
-            \nabla \mathcal{L}(\beta^{(t)})^\top
-            \Delta
-            \quad
-            \Rightarrow
-            \quad
-            \mathcal{L}(\beta^{(t)} + \Delta)
-            -
-            \mathcal{L}(\beta)
-            \approx
-            \nabla \mathcal{L}(\beta^{(t)})^\top
-            \Delta
-            \tag{18}
-            $$
-          </p>
-
-          <p class="blog-paragraph">
-            Dado que estamos trabajando con la función de pérdida, nuestro objetivo es minimizar su valor. Es decir,
-            buscamos que se cumpla que el siguiente paso reduzca el valor de la función de pérdida:
-
-            $$
-            \mathcal{L}(\beta^{(t)} + \Delta) \lt \mathcal{L}(\beta^{(t)})
-            \tag{19}
-            $$
-          </p>
-
-          <p class="blog-paragraph">
-            Teniendo en cuenta la inecuación de (19) se genera la siguiente condición desde (18):
-            $$
-            \nabla \mathcal{L}(\beta^{(t)})^\top
-            \Delta
-            \lt 0
-            $$
-          </p>
-
-          <p class="blog-paragraph">
-            En particular, podemos tomar a la dirección opuesta al gradiente como una elección natural para \( \Delta
-            \), pues como se sabe, el gradiente apunta en la dirección de máximo crecimiento de la función, ya que:
-            $$
-            \nabla \mathcal{L}(\beta^{(t)})^\top
-            (-\nabla \mathcal{L}(\beta^{(t)}))
-            =
-            -\lVert \nabla \mathcal{L}(\beta^{(t)}) \rVert_2^2
-            \lt 0
-            $$
-          </p>
-          <p class="blog-paragraph">
-            Por lo tanto, definimos el desplazamiento como:
-            $$
-            \Delta
-            =
-            - \alpha \nabla \mathcal{L}(\beta^{(t)}),
-            \quad \alpha
-            \gt
-            0
-            \tag{20}
-            $$
-
-            Donde \( \alpha \) es un parámetro positivo conocido como tasa de aprendizaje o step size.
-          </p>
-
-          <p class="blog-paragraph">
-            De esta forma, utilizando (20) en (18) podemos definir la regla para el cálculo del valor de la función de
-            pérdida en
-            el nuevo punto:
-            $$
-            \mathcal{L}(\beta^{(t)} + \Delta)
-            \approx
-            \mathcal{L}(\beta^{(t)})
-            -
-            \alpha
-            \lVert \nabla \mathcal{L}(\beta^{(t)}) \rVert_2^2
-            \tag{21}
-            $$
-          </p>
-
-          <p class="blog-paragraph">
-            Por otro lado, sabemos que el nuevo punto se calcula como:
-            $$
-            \beta^{(t+1)}
-            =
-            \beta^{(t)} + \Delta
-            $$
-          </p>
-          <p class="blog-quote">
-            \( \Delta \) es la diferencia entre un nuevo punto y el punto actual en el espacio de parámetros, pero su
-            valor exacto ya lo hemos definido en (20).
-          </p>
-          <p class="blog-paragraph-end">
-            Es decir, obtenemos la regla iterativa del descenso de gradiente es:
-            $$
-            \beta^{(t+1)}
-            =
-            \beta^{(t)}
-            -
-            \alpha
-            \nabla \mathcal{L}(\beta^{(t)})
-            $$
-          </p>
-          <h3 class="blog-paragraph-h3">Descenso de Gradiente con Backtracking</h3>
-
-          <p class="blog-paragraph">
-            En la derivación anterior del descenso de gradiente hemos asumido la existencia de un tamaño de paso
-            \( \alpha > 0 \) fijo. Sin embargo, en la práctica, la elección de este parámetro resulta crítica, ya que
-            valores demasiado grandes pueden provocar divergencia del algoritmo, mientras que valores demasiado pequeños
-            pueden ralentizar considerablemente la convergencia.
-          </p>
-
-          <p class="blog-paragraph">
-            Para abordar este problema, se introduce el método de <em>backtracking line search</em>, el cual nos ayuda a
-            seleccionar de manera adaptativa un tamaño de paso adecuado que garantice una disminución suficiente del
-            valor de la función de pérdida en cada iteración.
-          </p>
-
-          <p class="blog-paragraph">
-
-          </p>
-          <p class="blog-paragraph">
-            Recordando que obtuvimos la función de pérdida alrededor del punto actual \( \beta^{(t)} \) al resolver la
-            aproximación de Taylor de primer orden, la cual se expresa según (21) como:
-            $$
-            \mathcal{L}(\beta^{(t)} + \Delta)
-            \approx
-            \mathcal{L}(\beta^{(t)})
-            -
-            \alpha
-            \lVert \nabla \mathcal{L}(\beta^{(t)}) \rVert_2^2
-            $$
-
-          </p>
-
-          <p class="blog-paragraph">
-            Backtracking line search con la condición de Armijo busca asegurar que el valor real de la función de
-            pérdida en el nuevo punto \( \beta^{(t)} + \Delta \) sea menor que el valor predicho por la aproximación
-            lineal <sup><a href="#ref-3">[3]</a></sup>, es decir, que se cumpla:
-            $$
-            \mathcal{L}(\beta^{(t)} + \Delta)
+            \mathbb{P}\!\left(
+            D_P(\beta_0)
             \le
-            \mathcal{L}(\beta^{(t)})
-            -
-            c \alpha
-            \lVert \nabla \mathcal{L}(\beta^{(t)}) \rVert_2^2,
-            \quad 0 \lt c \lt 1
+            \chi^2_{1,1-\gamma}
+            \right)
+            =
+            1-\gamma
+            $$
+
+            $$
+            \Longrightarrow
+            \quad
+            C_{\gamma}
+            =
+            \left\{
+            \beta_0 :
+            D_P(\beta_0)
+            \le
+            \chi^2_{1,1-\gamma}
+            \right\}
             $$
           </p>
-          <p class="blog-paragraph">
-            Donde \( c \) es un parámetro pequeño que controla la suficiencia de la disminución.
-            Si la condición no se cumple, se reduce el tamaño del paso \( \alpha \) multiplicándolo por un factor \(
-            \omega \) (con \( 0 \lt \omega \lt 1 \)) y se vuelve a evaluar la condición hasta que se satisfaga.
-          </p>
-          <p class="blog-quote">
-            Dicho en otras palabras, Armijo exige que la función de pérdida disminuya al menos en una fracción \( c
-            \) del valor predicho por la aproximación lineal, asegurando así una reducción significativa en cada paso.
-            En dado caso de no cumplirse, se genera un nuevo tamaño de paso más pequeño \(\alpha_{n+1}\) , cuyo valor es
-            el resultado de
-            multiplicar el actual \(\alpha_n\) por \(\omega\).
-          </p>
-          <p class="blog-paragraph">
-            En resumen, el descenso de gradiente con backtracking line search usando la condición de Armijo nos ayuda a
-            asegurar una convergencia más robusta y eficiente, para ello adiciona dos parámetros adicionales \( c \) y
-            \( \omega \) que
-            regulan la suficiencia de la disminución y el ajuste del tamaño del paso, respectivamente
-          </p>
 
+          <p class="blog-paragraph">
+            $$
+            \beta_0 :
+            D_P(\beta_0)
+            \le
+            \chi^2_{1,1-\gamma}
+            \quad
+            \Longleftrightarrow
+            \quad
+            PL(\beta_0)
+            \ge
+            \ell(\widehat{\theta})
+            -
+            \frac{1}{2}
+            \chi^2_{1,1-\gamma}
+            $$
+          </p>
 
           <h3 class="blog-paragraph-h3">Referencias</h3>
           <ol class="blog-paragraph text-sm">
